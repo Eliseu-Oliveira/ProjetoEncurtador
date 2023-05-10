@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <meta name="author" content="Eliseu Oliveira">
+    <meta name="description" content="Encurtador de URLs">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name="keywords" content="encurtador, url, link, urls, links, short">
+
+    <link rel="icon" type="image/x-icon" href="./assets/icon/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon/logo.png">
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/load.css">
+    <link rel="stylesheet" href="assets/css/btns.css">
+    <title>Encurtador de URLs</title>
+</head>
+<body>
+    
+    
+    <div class="ajustes animate__fadeIn" style="display: none;">
+        <img src="assets/icon/conf.png" class="conf icon-conf" style="width: 20px;">
+        <h1>Encurtador de URLs</h1>
+        <img src="./assets/img/logo.png" alt="Logo" class="logo" id="logo" style="width: 60px; height: 60px;">
+
+        <div>
+            <h2>Gerenciar Links</h2>
+            <p class="dominio">Domínio: <a href="" target="_blank">...</a></p>
+        </div>
+
+        <div class="msg animate__heartBeat" id="settings-msg" style="display: none;">
+        </div>
+
+        <div class="container-ajustes" style="display: none;">
+            <span class="loader-ajustes" style="display: non;"></span>
+        </div>
+
+        <div class="tabela-links animate__fadeIn">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Link Encurtado</th>
+                        <th>Link Original</th>
+                        <th>Data/Hora</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-links">
+                    <tr>
+                        <td colspan="4">Nenhum link disponível</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modais animate__fadeIn">
+            <div class="modal">
+                <p>Editando: </p>
+                <button class="fechar-modal"><img src="assets/icon/not.png" class="icon-conf" style="width: 20px;"></button>
+                <form>
+                    <label for="path">Path (Slug)</label>
+                    <input type="text" class="path" id="path" minlength="2" maxlength="6">
+                </form>
+                <form>
+                    <label for="url-original">URL Original</label>
+                    <input type="text" class="url-original" id="url-original">
+                </form>
+                <button class="salvar-edit btn">SALVAR</button>
+            </div>
+            <div class="modal-boolean">
+                <p>Deseja excluir o link: <a href=""></a></p>
+
+                <div>
+                    <button class="btn btn-sim">SIM</button>
+                    <button class="btn btn-nao">NÃO</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container animate__fadeIn" style="display: non;">
+        <img src="assets/icon/conf.png" class="conf icon-conf" style="width: 20px;">
+        <h1>Encurtador de URLs</h1>
+        <img src="./assets/img/logo.png" alt="Logo" class="logo" style="width: 60px; height: 60px;">
+
+        <div class="campo-url">
+            <input type="text" placeholder="URL PARA ENCURTAR" class="encurtar">
+            <button class="btn-encurtar-link btn" style="display: none;"><img src="./assets/icon/link.png" class="icon-conf" style="width: 20px;"></button>
+        </div>
+
+        <div class="msg animate__heartBeat" id="msg-inicio" style="display: none;">
+        </div>
+
+        <div class="container-loader" style="display: flex;">
+            <button class="btn-encurtar btn">ENCURTAR</button>
+        </div>
+        <div class="loader" style="display: none;"></div>
+
+        <div class="link-retornado animate__fadeIn" style="display: none;">
+            <a href="" target="_blank"></a>
+            <small></small>
+        </div>
+
+        <div class="btn-interact animate__fadeIn" style="display: none;">
+            <button class="btn-copiar btn"><img src="assets/icon/copy.png" class="icon-conf" style="width: 20px;"> COPIAR</button>
+            <button class="btn-share btn"><img src="assets/icon/share.png" class="icon-conf" style="width: 20px;"> COMPARTILHAR</button>
+            <button class="btn-qr btn"><img src="assets/icon/qr.png" class="icon-conf" style="width: 20px;"> QR CODE</button>
+        </div>
+
+        <div class="shared animate__fadeIn" style="display: none;">
+            <button class="whats btn-rede"><img src="assets/icon/whatsapp.png" class="icon-rede" style="width: 40px;"></button>
+            <button class="linkd btn-rede"><img src="assets/icon/LinkedIn.svg" class="icon-rede" style="width: 40px;"></button>
+            <button class="twitt btn-rede"><img src="assets/icon/Twitter.svg" class="icon-rede" style="width: 40px;"></button>
+            <button class="face btn-rede"><img src="assets/icon/facebook.png" class="icon-rede" style="width: 40px;"></button>
+        </div>
+
+        <div class="shared-whats animate__fadeIn" style="display: none;">
+            <input type="tel" placeholder="Digite seu número de telefone Ex:(xx)xxxxx-xxxx" class="whats-num" minlength="10" maxlength="11" pattern="\([0-9]{2}\)[0-9]{4,5}-[0-9]{4}">
+            <button class="btn-share-whsts btn"><img src="assets/icon/share.png" class="icon-conf" style="width: 20px;"></button>
+        </div>
+
+        <div class="share-qr animate__fadeIn" style="display: none;">
+            <img src="" class="qr-img">
+            <a href="" class="qr-down" download="qr-code.png">SALVAR PNG</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Desenvolvido por: Eliseu Germano Contato:eliseugermano@hotmail.com</p>
+    </footer>
+    
+    <script type="module" src="assets/js/main.js" defer></script>
+    <script type="module" src="assets/js/ajustes-de-tela.js" defer></script>
+</body>
+</html>

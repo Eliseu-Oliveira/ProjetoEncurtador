@@ -1,0 +1,48 @@
+.btn{
+    height: 4rem;
+    background-color: var(--color6);
+    border-radius: var(--border-radius);
+    padding: 0 0.5rem;
+    min-width: 8.6rem;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.btn:hover{
+    border-bottom: .5rem solid var(--color1);
+    transition: all .2s ease-in-out;
+}
+.btn:active{
+    border-bottom: .5rem solid var(--color5);
+    transition: all .1s ease-in-out;
+}
+.btn-encurtar{
+    align-self: center;
+    width: 18rem;
+    position: relative;
+}
+
+.btn-encurtar-link{
+    text-align: center;
+}
+.icon-conf{
+    width: 2rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-rede{
+    width: 4rem;
+    cursor: pointer;
+}
+.btn-rede{
+    height: 4rem;
+}
+.edit-icon, .delete-icon{
+    cursor: pointer;
+}
+
+.alerta{
+    background-color: var(--colorerror);
+}
